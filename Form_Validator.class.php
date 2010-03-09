@@ -10,7 +10,7 @@ abstract class Form_Validator {
  
 		$missing_options = array_diff(static::$required_options, array_keys($options));
 		if (!empty($missing_options)) {
-			throw new Exception(sprintf(%.': the following options are missing: %s',
+			throw new Exception(sprintf('%s: the following options are missing: %s',
 				get_class($this),
 				implode(', ', $missing_options)));
 		}
@@ -19,7 +19,7 @@ abstract class Form_Validator {
 	}
  
 	function is_valid($field) {
-		return test($field->getAttribute('value'), $this->_options);
+		return $this->test($field->getAttribute('value'), $this->_options);
 	}
  
 	abstract static function test($value, $options);
